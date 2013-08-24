@@ -8,10 +8,8 @@
 namespace Essence;
 
 use ArrayIterator;
+use Essence\Config\Configurable;
 use IteratorAggregate;
-use Essence\Configurable;
-
-
 
 /**
  *	Stores informations about an embed response.
@@ -21,11 +19,7 @@ use Essence\Configurable;
  *	@package fg.Essence
  */
 
-class Media implements IteratorAggregate {
-
-	use Configurable;
-
-
+class Media  extends Configurable implements IteratorAggregate {
 
 	/**
 	 *	Embed data, indexed by property name. Providers must try to fill these

@@ -7,9 +7,8 @@
 
 namespace Essence\Di;
 
-use Essence\Configurable;
+use Essence\Config\Configurable;
 use Closure;
-use ReflectionClass;
 
 
 
@@ -20,11 +19,7 @@ use ReflectionClass;
  *	@package fg.Essence.Di
  */
 
-class Container {
-
-	use Configurable;
-
-
+class Container extends Configurable {
 
 	/**
 	 *	Container properties.

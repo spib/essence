@@ -7,8 +7,8 @@
 
 namespace Essence;
 
-use Essence\Cacheable;
-use Essence\Configurable;
+use Essence\Cache\CacheService;
+use Essence\Config\Configurable;
 use Essence\Di\Container\Standard as StandardContainer;
 use Essence\Cache\Engine as CacheEngine;
 use Essence\Dom\Parser as DomParser;
@@ -16,18 +16,16 @@ use Essence\Http\Client as HttpClient;
 use Essence\Log\Logger;
 use Essence\Provider\Collection;
 
-
-
 /**
  *	Gathers embed informations from URLs.
  *
  *	@package fg.Essence
  */
 
-class Essence {
+class Essence extends Configurable {
 
-	use Cacheable;
-	use Configurable;
+	//use Cacheable;
+	//use Configurable;
 
 
 
@@ -148,7 +146,7 @@ class Essence {
 
 	public function extract( $source ) {
 
-		return $this->_cached( '_extract', $source );
+		return $this->cached( '_extract', $source );
 	}
 
 
@@ -256,7 +254,7 @@ class Essence {
 
 	public function embed( $url, array $options = array( )) {
 
-		return $this->_cached( '_embed', $url, $options );
+		return $this->cached( '_embed', $url, $options );
 	}
 
 
@@ -334,12 +332,14 @@ class Essence {
 	 *	@return string Text with replaced URLs.
 	 */
 
-	public function replace( $text, $callback = null, array $options = array( )) {
+	public function replace( $text, $callback = null, array $options = array()) {
+
+        $that = $this;
 
 		return preg_replace_callback(
 			$this->urlPattern,
-			function ( $matches ) use ( $callback, $options ) {
-				$Media = $this->embed( $matches['url'], $options );
+			function ( $matches ) use ( $callback, $options, $that ) {
+				$Media = $that->embed( $matches['url'], $options );
 
 				if ( $Media === null ) {
 					return $matches['url'];
@@ -352,4 +352,60 @@ class Essence {
 			$text
 		);
 	}
+
+    /**
+         *    Internal cache engine.
+         *
+         * @var Essence\Cache\Engine
+         */
+
+        protected $_Cache = null;
+
+
+        /**
+         *    Returns the cached result of a method call.
+         *
+         * @param Essence\Cache\Engine $Engine Cache engine.
+         * @param string               $method The method to cache.
+         * @param ... mixed Parameters to be passed to the method.
+         *
+         * @return mixed Cached result.
+         */
+
+        public function cached($method)
+        {
+
+            $signature = $method;
+            $args      = array();
+
+            if (func_num_args() > 1) {
+                $args = array_slice(func_get_args(), 1);
+                $signature .= json_encode($args);
+            }
+
+            $key = $this->cacheKey($signature);
+
+            if ($this->_Cache->has($key)) {
+                return $this->_Cache->get($key);
+            }
+
+            $result = call_user_func_array(array($this, $method), $args);
+            $this->_Cache->set($key, $result);
+
+            return $result;
+        }
+
+
+        /**
+         *    Generates a key from the given signature.
+         *
+         * @param string $key Method signature.
+         *
+         * @return string Generated key.
+         */
+
+        public function cacheKey($signature)
+        {
+            return md5($signature);
+        }
 }

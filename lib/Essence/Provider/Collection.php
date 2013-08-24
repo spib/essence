@@ -7,7 +7,7 @@
 
 namespace Essence\Provider;
 
-use Essence\Configurable;
+use Essence\Config\Configurable;
 use Essence\Di\Container;
 
 
@@ -18,11 +18,7 @@ use Essence\Di\Container;
  *	@package fg.Essence.Provider
  */
 
-class Collection {
-
-	use Configurable;
-
-
+class Collection extends Configurable {
 
 	/**
 	 *	Dependency injection container.

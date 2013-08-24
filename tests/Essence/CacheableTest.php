@@ -7,6 +7,7 @@
 
 namespace Essence;
 
+use Essence\Cache\Cacheable;
 use PHPUnit_Framework_TestCase;
 use Essence\Cache\Engine;
 use Essence\Cache\Engine\Volatile;
@@ -17,17 +18,13 @@ use Essence\Cache\Engine\Volatile;
  *
  */
 
-class CacheableImplementation {
-
-	use Cacheable;
-
-
+class CacheableImplementation extends Cacheable {
 
 	/**
 	 *
 	 */
 
-	public function __construct( Engine $Engine ) {
+	public function __construct( Engine $Engine) {
 
 		$this->_Cache = $Engine;
 	}
@@ -38,7 +35,7 @@ class CacheableImplementation {
 	 *
 	 */
 
-	protected function _cacheKey( $signature ) {
+	public function cacheKey( $signature ) {
 
 		return 'key';
 	}
@@ -51,7 +48,7 @@ class CacheableImplementation {
 
 	public function cachedMethod( $arg ) {
 
-		return $this->_cached( '_cachedMethod', $arg );
+		return $this->cached( '_cachedMethod', $arg );
 	}
 
 

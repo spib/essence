@@ -7,6 +7,7 @@
 
 namespace Essence;
 
+use Essence\Config\Configurable;
 use PHPUnit_Framework_TestCase;
 
 
@@ -15,20 +16,22 @@ use PHPUnit_Framework_TestCase;
  *
  */
 
-class ConfigurableImplementation {
+class ConfigurableImplementation extends Configurable {
 
-	use Configurable;
+    	/**
+    	 *
+    	 */
+
+    	public function __construct( ) {
+
+            $this->_properties = array(
+            		'one' => 1,
+            		'two' => 2
+            	);
+    	}
 
 
 
-	/**
-	 *
-	 */
-
-	protected $_properties = array(
-		'one' => 1,
-		'two' => 2
-	);
 }
 
 

@@ -1,6 +1,7 @@
 vendor
+.idea
+.idea/php.xml
 
 .buildpath
 .settings
 .project
-

@@ -7,12 +7,8 @@
 
 namespace Essence;
 
-use Essence\Configurable;
-use Essence\Exception;
-use Essence\Media;
+use Essence\Config\Configurable;
 use Essence\Log\Logger;
-
-
 
 /**
  *	Base class for a Provider.
@@ -20,11 +16,7 @@ use Essence\Log\Logger;
  *	@package fg.Essence
  */
 
-abstract class Provider {
-
-	use Configurable;
-
-
+abstract class Provider extends Configurable {
 
 	/**
 	 *	Internal logger.
