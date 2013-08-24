@@ -51,7 +51,7 @@ class OEmbed extends Provider {
 	/**
 	 *	Internal HTTP client.
 	 *
-	 *	@var Essence\Http\Client
+	 *	@var \Essence\Http\Client
 	 */
 
 	protected $_Http = null;
@@ -61,7 +61,7 @@ class OEmbed extends Provider {
 	/**
 	 *	Internal DOM parser.
 	 *
-	 *	@var Essence\Dom\Parser
+	 *	@var \Essence\Dom\Parser
 	 */
 
 	protected $_Dom = null;
@@ -87,9 +87,9 @@ class OEmbed extends Provider {
 	/**
 	 *	Constructor.
 	 *
-	 *	@param Essence\Http\Client $Http HTTP client.
-	 *	@param Essence\Dom\Parser $Dom DOM parser.
-	 *	@param Essence\Log\Logger $Log Logger.
+	 *	@param \Essence\Http\Client $Http HTTP client.
+	 *	@param \Essence\Dom\Parser $Dom DOM parser.
+	 *	@param \Essence\Log\Logger $Log Logger.
 	 */
 
 	public function __construct(
@@ -152,7 +152,7 @@ class OEmbed extends Provider {
 	 *
 	 *	@note If no endpoint was specified in the configuration, the page at
 	 *		the given URL will be parsed to find one.
-	 *	@throws Essence\Exception If the parsed page doesn't provide any endpoint.
+	 *	@throws \Essence\Exception If the parsed page doesn't provide any endpoint.
 	 */
 
 	protected function _embed( $url, $options ) {

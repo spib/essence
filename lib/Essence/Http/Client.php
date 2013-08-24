@@ -22,7 +22,7 @@ interface Client {
 	 *
 	 *	@param string $url The URL fo fetch contents from.
 	 *	@return string The contents.
-	 *	@throws Essence\Http\Exception
+	 *	@throws \Essence\Http\Exception
 	 */
 
 	public function get( $url );

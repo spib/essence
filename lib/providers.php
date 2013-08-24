@@ -12,7 +12,7 @@ use Essence\Provider\OEmbed;
 /**
  *	Default providers configuration.
  *
- *	@see Essence\ProviderCollection::$_config
+ *	@see \Essence\Provider\Collection::$_config
  *	@var array
  */
 
@@ -236,7 +236,7 @@ return array(
 			 *	- http://www.youtube.com/watch?v=oHg5SJYRHA0
 			 */
 
-			$url = OEmbed::prepareUrl( $url );
+			//$url = OEmbed::prepareUrl( $url );
 
 			if ( preg_match( '#(?:v=|v/|embed/|youtu\.be/)(?<id>[a-z0-9_-]+)#i', $url, $matches )) {
 				$url = 'http://www.youtube.com/watch?v=' . $matches['id'];

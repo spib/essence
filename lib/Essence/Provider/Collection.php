@@ -23,7 +23,7 @@ class Collection extends Configurable {
 	/**
 	 *	Dependency injection container.
 	 *
-	 *	@var Essence\Di\Container
+	 *	@var \Essence\Di\Container
 	 */
 
 	protected $_Container = null;
@@ -61,7 +61,7 @@ class Collection extends Configurable {
 	/**
 	 *	Constructor.
 	 *
-	 *	@param Essence\Di\Container $Container Dependency injection container
+	 *	@param \Essence\Di\Container $Container Dependency injection container
 	 *		used to build providers.
 	 */
 
@@ -71,14 +71,15 @@ class Collection extends Configurable {
 	}
 
 
-
-	/**
-	 *	Loads configuration from an array or a file.
-	 *
-	 *	@throws Essence\Exception If the configuration is not an array.
-	 *	@param array|string $config A configuration array, or a configuration
-	 *		file returning such an array.
-	 */
+    /**
+     *    Loads configuration from an array or a file.
+     *
+     *
+     * @param array|string $config A configuration array, or a configuration
+     *                             file returning such an array.
+     *
+     * @throws Exception
+     */
 
 	public function load( $config ) {
 

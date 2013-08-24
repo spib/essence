@@ -8,7 +8,7 @@ abstract class Cacheable
     /**
      *    Internal cache engine.
      *
-     * @var Essence\Cache\Engine
+     * @var \Essence\Cache\Engine
      */
 
     protected $_Cache = null;
@@ -17,7 +17,6 @@ abstract class Cacheable
     /**
      *    Returns the cached result of a method call.
      *
-     * @param Essence\Cache\Engine $Engine Cache engine.
      * @param string               $method The method to cache.
      * @param ... mixed Parameters to be passed to the method.
      *
@@ -51,7 +50,7 @@ abstract class Cacheable
     /**
      *    Generates a key from the given signature.
      *
-     * @param string $key Method signature.
+     * @param string $signature Method signature.
      *
      * @return string Generated key.
      */

@@ -30,7 +30,7 @@ class OpenGraph extends Provider {
 	/**
 	 *	Internal HTTP client.
 	 *
-	 *	@var Essence\Http\Client
+	 *	@var \Essence\Http\Client
 	 */
 
 	protected $_Http = null;
@@ -40,7 +40,7 @@ class OpenGraph extends Provider {
 	/**
 	 *	Internal DOM parser.
 	 *
-	 *	@var Essence\Dom\Parser
+	 *	@var \Essence\Dom\Parser
 	 */
 
 	protected $_Dom = null;
@@ -50,9 +50,9 @@ class OpenGraph extends Provider {
 	/**
 	 *	Constructor.
 	 *
-	 *	@param Essence\Http\Client $Http HTTP client.
-	 *	@param Essence\Dom\Parser $Dom DOM parser.
-	 *	@param Essence\Log\Logger $Log Logger.
+	 *	@param \Essence\Http\Client $Http HTTP client.
+	 *	@param \Essence\Dom\Parser $Dom DOM parser.
+	 *	@param \Essence\Log\Logger $Log Logger.
 	 */
 
 	public function __construct(
