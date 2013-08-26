@@ -236,7 +236,7 @@ return array(
 			 *	- http://www.youtube.com/watch?v=oHg5SJYRHA0
 			 */
 
-			//$url = OEmbed::prepareUrl( $url );
+			$url = trim( $url );
 
 			if ( preg_match( '#(?:v=|v/|embed/|youtu\.be/)(?<id>[a-z0-9_-]+)#i', $url, $matches )) {
 				$url = 'http://www.youtube.com/watch?v=' . $matches['id'];
